@@ -1,70 +1,73 @@
-# Getting Started with Create React App
+## 📘 About the Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Productivity Pro Registration Form** is a UI implementation task for a Senior UI Engineer role. The goal was to recreate a Figma design of a registration form with attention to:
 
-## Available Scripts
+- **Visual accuracy**
+- **Accessibility**
+- **Scalable component architecture**
+- **Design system alignment**
 
-In the project directory, you can run:
+The project uses **React** and **Tailwind CSS**, with an atomic design breakdown (atoms, molecules, organisms) and is structured for easy future integration with a full design system (via Style Dictionary and theme tokens).
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🚀 Getting Started
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+To run the project locally:
 
-### `npm test`
+### 1. Install dependencies
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+npm install
+```
 
-### `npm run build`
+### 2. Start the development server
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+npm start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 3. Open in your browser
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Visit: [http://localhost:3000](http://localhost:3000)
 
-### `npm run eject`
+# Production Readiness & Design System Considerations
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🛠️ What I'd Do for Production
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+If I were preparing this for a full production implementation, I would:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **Integrate a design token system** using [Style Dictionary](https://amzn.github.io/style-dictionary) to manage colors, typography, spacing, and radii across themes and platforms. For this task, I focused on atomic structure and visual accuracy under time constraints.
+- **Set up theming support**, using CSS variables and a `ThemeContext` to enable switching between multiple app-specific themes (as required by the company’s multi-app design system).
+- **Introduce Storybook** for documenting atomic and compound components and their variants.
+- Add **form validation and feedback states**
+- Test for keyboard navigation and screen reader semantics.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## ⏳ What I Didn’t Have Time to Do
 
-## Learn More
+Due to time constraints, I focused on clarity, structure, and accessibility, and deferred some things I would normally implement:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **Design tokens** were used via Tailwind utility classes and semantic naming, but I didn’t extract them into a centralized tokens file + Style Dictionary pipeline.
+- **No theme switching** is implemented yet, but it could be supported.
+- I did not wire up **runtime styling via CSS variables** or expose tokens in JS for animations or dynamic styling.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🔍 Questions I’d Ask the Designer Before Starting
 
-### Code Splitting
+To ensure alignment with design intent and accessibility goals:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. **What are the theming requirements across different apps?**
+2. **Should the form components or Card sections be built for reuse in modals, drawers, pages, etc.?**
+3. **What are the expectations for responsiveness / mobile breakpoints?**
+4. **Should the button include specific variants or patterns like ghost, destructive, link styles?**
+5. **Is there a defined behavior for form validation, error states, or success messages?**
+6. **Can I double check the design tokens I have extracted**
 
-### Analyzing the Bundle Size
+## ♿ What I Did to Address Accessibility
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+The design had some minor accessibility gaps which I addressed in the following way:
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Ensured all `input` fields are associated with labels using `<label htmlFor>`.
+- Converted radio buttons into a semantic `<fieldset>` and `<legend>` for screen reader clarity.
+- Used `sr-only` to hide radio inputs while preserving accessibility.
+- Added focus styles using Tailwind’s `focus:ring-*` utilities.
+- Increased contrast of 'Register' button.
